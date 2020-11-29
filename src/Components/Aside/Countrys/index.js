@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 import { Container } from './styles';
 
 function Countrys() {
@@ -7,30 +7,12 @@ function Countrys() {
     <Container>
       <h5>Seus países</h5>
 
-      <div>
-        <a href="/">
+      <nav>
+        <NavLink to="sobre">
           <img src="https://restcountries.eu/data/bra.svg" alt="" srcSet="" />
           <h4>Brazil</h4>
-        </a>
-      </div>
-      <div>
-        <a href="/">
-          <img src="https://restcountries.eu/data/bra.svg" alt="" srcSet="" />
-          <h4>Brazil</h4>
-        </a>
-      </div>
-      <div>
-        <a href="/">
-          <img src="https://restcountries.eu/data/bra.svg" alt="" srcSet="" />
-          <h4>Brazil</h4>
-        </a>
-      </div>
-      <div>
-        <a href="/">
-          <img src="https://restcountries.eu/data/bra.svg" alt="" srcSet="" />
-          <h4>Brazil</h4>
-        </a>
-      </div>
+        </NavLink>
+      </nav>
     </Container>
   );
 }

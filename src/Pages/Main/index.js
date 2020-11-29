@@ -1,10 +1,9 @@
 import React from 'react';
-import ListCountries from '../../Components/Countries/index';
-import About from '../About/index';
-import Edit from '../Edit/index';
+
 import Aside from '../../Components/Aside/index';
 import { Container } from './styles';
 import Header from '../../Components/Header/index';
+import WrapperRoutes from '../../Routes/Routes';
 
 function Page() {
   return (
@@ -12,9 +11,7 @@ function Page() {
       <Aside />
       <div className="rotas">
         <Header />
-        <ListCountries />
-        <About />
-        <Edit />
+        <WrapperRoutes />
       </div>
     </Container>
   );

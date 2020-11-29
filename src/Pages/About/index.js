@@ -1,8 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Container } from './styles';
 
 function About() {
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate('/');
+  }
+  function handleEdit() {
+    navigate('/editar');
+  }
+
   return (
     <Container>
       <h1>Brazil</h1>
@@ -12,8 +22,12 @@ function About() {
       <p>Poulation: 206135893</p>
       <p>topLevelDomains: .br</p>
       <div className="actions">
-        <button type="button">Voltar</button>
-        <button type="button">Adicionar</button>
+        <button type="button" onClick={handleClick}>
+          Voltar
+        </button>
+        <button type="button" onClick={handleEdit}>
+          Editar
+        </button>
       </div>
     </Container>
   );

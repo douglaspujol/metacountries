@@ -8,7 +8,7 @@ export const Container = styled.div`
     text-transform: uppercase;
     margin: 10px;
   }
-  div {
+  nav {
     width: 100%;
     margin: 4px 0;
 
@@ -24,6 +24,9 @@ export const Container = styled.div`
         margin-right: 5px;
       }
       &:hover {
+        border: 1px solid #389cf2;
+      }
+      &.active {
         border: 1px solid #389cf2;
       }
     }

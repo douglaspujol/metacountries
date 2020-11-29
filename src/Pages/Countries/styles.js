@@ -24,10 +24,13 @@ export const Container = styled.div`
       p {
         font-size: 14px;
       }
-      button {
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-top: 10px;
         padding: 0 20px;
-        height: 25px;
+        height: 40px;
         line-height: 25px;
         text-align: center;
         border: 1px solid #389cf2;
