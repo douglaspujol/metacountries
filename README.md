@@ -35,7 +35,7 @@ São objetivos do desafio:
 <img src="./src/assets/04.png">
 
 
-Para mais informações. Assita o vídeo no Youtebe onde explico todas as funcionalides e futaras features do projeto.<br>
+Para mais informações. Assita o vídeo no Youtube onde explico todas as funcionalidades e futuras features do projeto.<br>
 https://youtu.be/oSMjSc1lOI0
 <br>
 Muito Obrigado
