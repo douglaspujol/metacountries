@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from './Form/index';
-import Countrys from './Countrys/index';
+import Countrys from './Countries/index';
 import { Container } from './styles';
 
 function Aside() {

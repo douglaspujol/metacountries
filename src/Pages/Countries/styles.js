@@ -5,18 +5,25 @@ export const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     li {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 300px;
       border: 1px solid #eee;
       border-radius: 4px;
       padding: 10px;
-      margin: 5px;
+      margin: 10px;
       &:hover {
         border: 1px solid #389cf2;
       }
       img {
         max-width: 150px;
+        box-shadow: 9px 6px 10px -9px rgba(0, 0, 0, 0.32);
       }
 
       h4 {
+        max-width: 100%;
         font-size: 16px;
         font-weight: 700;
         margin: 10px 0;

@@ -5,7 +5,7 @@ import { Container } from './styles';
 function Header() {
   return (
     <Container>
-      <h1>RESULTADOS DA BUSCA</h1>
+      <h1>Country Meta</h1>
     </Container>
   );
 }

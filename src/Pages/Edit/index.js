@@ -1,67 +1,85 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container } from './styles';
+import { updateCountryToList } from '../../store/modules/favoriteCountries/actions';
 import Input from '../../Components/Input/index';
 
 function Edit() {
-  const [teste, setTest] = React.useState();
-  const [valuesForm, setValuesForm] = React.useState({});
+  const [countryEdit, setCountryEdit] = React.useState();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const countries = useSelector(state => state.favoriteCountries.myCountries);
+
+  React.useEffect(() => {
+    const findCountry = countries.find(country => country._id === id);
+    setCountryEdit(findCountry);
+  }, [countries, id]);
 
   function handleClick() {
-    navigate('/sobre');
+    navigate('/');
   }
   function onChange(e) {
     const { name, value } = e.target;
-    setValuesForm({ ...valuesForm, [name]: value });
-    setTest(value);
+    if (name === 'topLevelDomains') {
+      setCountryEdit({ ...countryEdit, [name]: [{ name: value }] });
+      return;
+    }
+    setCountryEdit({ ...countryEdit, [name]: value });
   }
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(valuesForm);
+    dispatch(updateCountryToList(countryEdit));
+    navigate(`../../../favoritos/${id}`);
   }
 
   return (
     <Container>
-      <div>
-        <h1>Brazil</h1>
-        <img src="https://restcountries.eu/data/bra.svg" alt="" srcSet="" />
-      </div>
-      <form onSubmit={handleSubmit}>
-        <Input
-          onChange={onChange}
-          label="Capital"
-          id="capital"
-          value={teste}
-          placeholder="Digite a capital"
-        />
-        <Input
-          onChange={onChange}
-          label="Area"
-          id="area"
-          value="8515767"
-          placeholder="Digite a Area"
-        />
-        <Input
-          onChange={onChange}
-          label="Population"
-          id="population"
-          value="206135893"
-          placeholder="Digite a população"
-        />
-        <Input
-          onChange={onChange}
-          label="topLevelDomains"
-          id="topLevelDomains"
-          value=".br"
-          placeholder="Digite o domínio"
-        />
+      {countryEdit && (
+        <>
+          <div>
+            <h1>{countryEdit.name}</h1>
+            <img src={countryEdit.flag.svgFile} alt="" srcSet="" />
+          </div>
+          <form onSubmit={handleSubmit}>
+            <Input
+              onChange={onChange}
+              label="Capital"
+              id="capital"
+              value={countryEdit.capital}
+              placeholder="Digite a capital"
+            />
+            <Input
+              onChange={onChange}
+              label="Area"
+              id="area"
+              value={`${countryEdit.area}`}
+              placeholder="Digite a Area"
+            />
+            <Input
+              onChange={onChange}
+              label="Population"
+              id="population"
+              value={`${countryEdit.population}`}
+              placeholder="Digite a população"
+            />
+            <Input
+              onChange={onChange}
+              label="topLevelDomains"
+              id="topLevelDomains"
+              value={countryEdit.topLevelDomains[0].name}
+              placeholder="Digite o domínio"
+            />
 
-        <button type="submit">Salvar</button>
-        <button type="button" onClick={() => handleClick()}>
-          Voltar
-        </button>
-      </form>
+            <button type="submit">Salvar</button>
+            <button type="button" onClick={() => handleClick()}>
+              Voltar
+            </button>
+          </form>
+        </>
+      )}
     </Container>
   );
 }

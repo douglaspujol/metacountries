@@ -13,6 +13,7 @@ export const Container = styled.div`
     margin: 4px 0;
 
     a {
+      margin: 5px 0;
       align-items: center;
       display: flex;
       border: 1px solid #ccc;

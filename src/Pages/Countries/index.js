@@ -1,21 +1,35 @@
+/* eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { Container } from './styles';
 
 function Countries() {
+  const countriesList = useSelector(state => state.countries.countriesList);
   return (
     <Container>
       <ul>
-        <li>
-          <img src="https://restcountries.eu/data/bra.svg" alt="" srcSet="" />
-          <h4>Name: Brazil</h4>
-          <p>Capital: Brasília</p>
-          <Link to="sobre">ver detalhes</Link>
-        </li>
+        {countriesList.length > 0
+          ? countriesList.map(country => (
+            <li key={country._id}>
+              <img src={country.flag.svgFile} alt="" srcSet="" />
+              <h4>Name: {country.name}</h4>
+              <p>
+                Capital:{country.capital ? country.capital : 'Não possui.'}
+              </p>
+              <Link to={`detalhes/${country._id}`}>ver detalhes</Link>
+            </li>
+          ))
+          : 'Carregando países'}
       </ul>
     </Container>
   );
 }
 
 export default Countries;
+/**
+ *
+countriesList.map(results => (
+
+ */
